@@ -885,3 +885,7 @@ Voy a crear una página web para la consulta oftalmológica "Vero's" con todas l
       <h2 class="section-title">Testimonios</h2>
       <p class="section-subtitle
 ```
+git add .
+git commit -m "Initial commit"
+git push origin main
+
