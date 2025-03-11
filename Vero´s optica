@@ -3,9 +3,6 @@ cd vero-s
 git add .
 git commit -m "Initial commit"
 git push origin main
-Voy a crear una página web para la consulta oftalmológica "Vero's" con todas las secciones y funcionalidades que solicitas.
-
-```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -884,8 +881,3 @@ Voy a crear una página web para la consulta oftalmológica "Vero's" con todas l
     <div class="container">
       <h2 class="section-title">Testimonios</h2>
       <p class="section-subtitle
-```
-git add .
-git commit -m "Initial commit"
-git push origin main
-
