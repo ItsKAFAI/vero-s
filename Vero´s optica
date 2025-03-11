@@ -3,3 +3,885 @@ cd vero-s
 git add .
 git commit -m "Initial commit"
 git push origin main
+Voy a crear una página web para la consulta oftalmológica "Vero's" con todas las secciones y funcionalidades que solicitas.
+
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Vero's - Consulta Oftalmológica de Calidad. Agenda tu cita en línea y cuida de tu salud visual con nuestros expertos oftalmólogos.">
+  <title>Vero's - Consulta Oftalmológica</title>
+  <style>
+    :root {
+      --primary-color: #3498db;
+      --secondary-color: #2c3e50;
+      --accent-color: #e74c3c;
+      --light-color: #ecf0f1;
+      --dark-color: #34495e;
+      --success-color: #2ecc71;
+      --warning-color: #f39c12;
+      --gray-color: #95a5a6;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      color: var(--dark-color);
+      line-height: 1.6;
+    }
+    
+    a {
+      text-decoration: none;
+      color: var(--primary-color);
+    }
+    
+    ul {
+      list-style: none;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .section {
+      padding: 80px 0;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2.5rem;
+      color: var(--secondary-color);
+    }
+    
+    .section-subtitle {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 1.2rem;
+      color: var(--gray-color);
+    }
+    
+    /* Header */
+    header {
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+    
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+    }
+    
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+    
+    .logo span {
+      color: var(--secondary-color);
+    }
+    
+    .nav-menu {
+      display: flex;
+    }
+    
+    .nav-menu li {
+      margin-left: 30px;
+    }
+    
+    .nav-menu a {
+      color: var(--dark-color);
+      font-weight: 500;
+      transition: 0.3s;
+    }
+    
+    .nav-menu a:hover {
+      color: var(--primary-color);
+    }
+    
+    .menu-btn {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(52, 152, 219, 0.8), rgba(44, 62, 80, 0.9)), url('/api/placeholder/1200/600') no-repeat center center/cover;
+      height: 100vh;
+      color: white;
+      display: flex;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .hero-title {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 30px;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 5px;
+      font-weight: 500;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    
+    .btn-primary {
+      background-color: var(--primary-color);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background-color: #2980b9;
+    }
+    
+    .btn-secondary {
+      background-color: transparent;
+      color: white;
+      border: 2px solid white;
+      margin-left: 15px;
+    }
+    
+    .btn-secondary:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    /* About Us */
+    .about-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .about-text {
+      flex: 1;
+      min-width: 300px;
+      padding-right: 30px;
+    }
+    
+    .about-image {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .about-image img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .team-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 50px;
+    }
+    
+    .team-member {
+      width: 250px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .team-member img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .team-member h3 {
+      margin-bottom: 5px;
+      color: var(--secondary-color);
+    }
+    
+    .team-member p {
+      color: var(--gray-color);
+    }
+    
+    /* Services */
+    .services-bg {
+      background-color: var(--light-color);
+    }
+    
+    .services-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+    
+    .service-card {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      width: 350px;
+      transition: 0.3s;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .service-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    
+    .service-content {
+      padding: 20px;
+    }
+    
+    .service-title {
+      margin-bottom: 10px;
+      color: var(--secondary-color);
+    }
+    
+    /* Appointment */
+    .appointment-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .appointment-info {
+      flex: 1;
+      min-width: 300px;
+      padding-right: 30px;
+    }
+    
+    .appointment-form {
+      flex: 1;
+      min-width: 300px;
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+    
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    
+    .time-slots {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    
+    .time-slot {
+      padding: 8px 15px;
+      border: 1px solid var(--primary-color);
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    
+    .time-slot:hover, .time-slot.selected {
+      background-color: var(--primary-color);
+      color: white;
+    }
+    
+    .form-submit {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+      width: 100%;
+    }
+    
+    .form-submit:hover {
+      background-color: #2980b9;
+    }
+    
+    /* Testimonials */
+    .testimonials-bg {
+      background-color: var(--light-color);
+    }
+    
+    .testimonials-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+    
+    .testimonial-card {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      width: 350px;
+    }
+    
+    .testimonial-content {
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+    
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+    }
+    
+    .testimonial-author img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 15px;
+    }
+    
+    .author-info h4 {
+      margin-bottom: 5px;
+      color: var(--secondary-color);
+    }
+    
+    .author-info p {
+      color: var(--gray-color);
+      font-size: 0.9rem;
+    }
+    
+    /* Contact */
+    .contact-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    
+    .contact-info {
+      flex: 1;
+      min-width: 300px;
+      padding-right: 30px;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      background-color: var(--primary-color);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 15px;
+      color: white;
+      font-size: 1.5rem;
+    }
+    
+    .contact-form {
+      flex: 1;
+      min-width: 300px;
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .map-container {
+      margin-top: 50px;
+      border-radius: 10px;
+      overflow: hidden;
+      height: 400px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .map-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    /* Blog */
+    .blog-bg {
+      background-color: var(--light-color);
+    }
+    
+    .blog-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+    
+    .blog-card {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      width: 350px;
+      transition: 0.3s;
+    }
+    
+    .blog-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .blog-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    
+    .blog-content {
+      padding: 20px;
+    }
+    
+    .blog-date {
+      color: var(--gray-color);
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+    }
+    
+    .blog-title {
+      margin-bottom: 10px;
+      color: var(--secondary-color);
+    }
+    
+    .read-more {
+      display: inline-block;
+      margin-top: 10px;
+      font-weight: 500;
+      color: var(--primary-color);
+    }
+    
+    /* Privacy */
+    .privacy-content {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .privacy-content h3 {
+      margin: 20px 0 10px;
+      color: var(--secondary-color);
+    }
+    
+    /* Footer */
+    footer {
+      background-color: var(--secondary-color);
+      color: white;
+      padding: 50px 0 20px;
+    }
+    
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    
+    .footer-section {
+      flex: 1;
+      min-width: 250px;
+      margin-bottom: 30px;
+    }
+    
+    .footer-title {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .footer-title::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 50px;
+      height: 2px;
+      background-color: var(--primary-color);
+    }
+    
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+    
+    .footer-links a {
+      color: #bdc3c7;
+      transition: 0.3s;
+    }
+    
+    .footer-links a:hover {
+      color: white;
+      padding-left: 5px;
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid #34495e;
+      margin-top: 30px;
+    }
+    
+    .social-icons {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .social-icons a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      background-color: #34495e;
+      border-radius: 50%;
+      color: white;
+      transition: 0.3s;
+    }
+    
+    .social-icons a:hover {
+      background-color: var(--primary-color);
+      transform: translateY(-5px);
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .menu-btn {
+        display: block;
+      }
+      
+      .nav-menu {
+        position: fixed;
+        background-color: var(--secondary-color);
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 50px;
+        transition: 0.3s;
+      }
+      
+      .nav-menu.active {
+        left: 0;
+      }
+      
+      .nav-menu li {
+        margin: 15px 0;
+      }
+      
+      .nav-menu a {
+        color: white;
+        font-size: 1.2rem;
+      }
+      
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      
+      .about-text, .about-image, 
+      .appointment-info, .appointment-form,
+      .contact-info, .contact-form {
+        padding-right: 0;
+        margin-bottom: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav class="navbar">
+        <a href="#home" class="logo">Vero's <span>Oftalmología</span></a>
+        <div class="menu-btn" id="menuBtn">☰</div>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="#home">Inicio</a></li>
+          <li><a href="#about">Nosotros</a></li>
+          <li><a href="#services">Servicios</a></li>
+          <li><a href="#appointment">Agendar Cita</a></li>
+          <li><a href="#testimonials">Testimonios</a></li>
+          <li><a href="#contact">Contacto</a></li>
+          <li><a href="#blog">Blog</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title">Su salud visual es nuestra prioridad</h1>
+        <p class="hero-subtitle">En Vero's Oftalmología ofrecemos servicios de alta calidad con tecnología de vanguardia y profesionales altamente capacitados</p>
+        <div>
+          <a href="#appointment" class="btn btn-primary">Agendar Cita</a>
+          <a href="#about" class="btn btn-secondary">Conócenos</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section">
+    <div class="container">
+      <h2 class="section-title">Sobre Nosotros</h2>
+      <p class="section-subtitle">Conoce a nuestro equipo de profesionales</p>
+      
+      <div class="about-content">
+        <div class="about-text">
+          <h3>Nuestra Misión</h3>
+          <p>En Vero's Oftalmología, nuestra misión es proporcionar atención oftalmológica integral de la más alta calidad, utilizando tecnología de vanguardia y un enfoque centrado en el paciente para mejorar y preservar la salud visual de nuestros pacientes.</p>
+          <p>Nos esforzamos por ofrecer diagnósticos precisos, tratamientos efectivos y una experiencia excepcional para cada paciente que confía en nosotros para el cuidado de sus ojos.</p>
+          <h3>Nuestra Visión</h3>
+          <p>Aspiramos a ser reconocidos como líderes en la atención oftalmológica, estableciendo nuevos estándares de excelencia clínica, innovación tecnológica y satisfacción del paciente. Buscamos hacer que la atención oftalmológica de calidad sea accesible para todos, mejorando la calidad de vida de nuestra comunidad a través de una mejor salud visual.</p>
+        </div>
+        <div class="about-image">
+          <img src="/api/placeholder/600/400" alt="Equipo médico de Vero's Oftalmología">
+        </div>
+      </div>
+      
+      <div class="team-container">
+        <div class="team-member">
+          <img src="/api/placeholder/180/180" alt="Dra. Verónica Mendoza">
+          <h3>Dra. Verónica Mendoza</h3>
+          <p>Oftalmóloga</p>
+          <p>Especialista en Cirugía Refractiva</p>
+        </div>
+        <div class="team-member">
+          <img src="/api/placeholder/180/180" alt="Dr. Carlos Jiménez">
+          <h3>Dr. Carlos Jiménez</h3>
+          <p>Oftalmólogo</p>
+          <p>Especialista en Retina</p>
+        </div>
+        <div class="team-member">
+          <img src="/api/placeholder/180/180" alt="Dra. Laura Torres">
+          <h3>Dra. Laura Torres</h3>
+          <p>Oftalmóloga</p>
+          <p>Especialista en Córnea</p>
+        </div>
+        <div class="team-member">
+          <img src="/api/placeholder/180/180" alt="Ana Márquez">
+          <h3>Ana Márquez</h3>
+          <p>Optometrista</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="section services-bg">
+    <div class="container">
+      <h2 class="section-title">Nuestros Servicios</h2>
+      <p class="section-subtitle">Ofrecemos una amplia gama de servicios oftalmológicos</p>
+      
+      <div class="services-container">
+        <div class="service-card">
+          <img src="/api/placeholder/350/200" alt="Examen de la vista">
+          <div class="service-content">
+            <h3 class="service-title">Examen Completo de la Vista</h3>
+            <p>Evaluación exhaustiva de la salud visual que incluye pruebas de agudeza visual, presión intraocular, evaluación del fondo de ojo y detección temprana de enfermedades oculares.</p>
+          </div>
+        </div>
+        
+        <div class="service-card">
+          <img src="/api/placeholder/350/200" alt="Prescripción de lentes">
+          <div class="service-content">
+            <h3 class="service-title">Prescripción de Lentes</h3>
+            <p>Determinación precisa de la graduación necesaria para corregir problemas de visión como miopía, hipermetropía, astigmatismo y presbicia.</p>
+          </div>
+        </div>
+        
+        <div class="service-card">
+          <img src="/api/placeholder/350/200" alt="Cirugía refractiva">
+          <div class="service-content">
+            <h3 class="service-title">Cirugía Refractiva</h3>
+            <p>Procedimientos quirúrgicos como LASIK y PRK para corregir errores refractivos y reducir o eliminar la dependencia de gafas o lentes de contacto.</p>
+          </div>
+        </div>
+        
+        <div class="service-card">
+          <img src="/api/placeholder/350/200" alt="Tratamiento de cataratas">
+          <div class="service-content">
+            <h3 class="service-title">Tratamiento de Cataratas</h3>
+            <p>Diagnóstico y cirugía de cataratas con implante de lentes intraoculares de última generación para restaurar la visión clara.</p>
+          </div>
+        </div>
+        
+        <div class="service-card">
+          <img src="/api/placeholder/350/200" alt="Tratamiento de glaucoma">
+          <div class="service-content">
+            <h3 class="service-title">Tratamiento de Glaucoma</h3>
+            <p>Detección temprana, monitoreo y tratamiento del glaucoma para prevenir la pérdida de visión, incluyendo terapias médicas y quirúrgicas.</p>
+          </div>
+        </div>
+        
+        <div class="service-card">
+          <img src="/api/placeholder/350/200" alt="Tratamientos para retina">
+          <div class="service-content">
+            <h3 class="service-title">Tratamientos para Retina</h3>
+            <p>Diagnóstico y tratamiento de enfermedades de la retina como degeneración macular, retinopatía diabética y desprendimiento de retina.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Appointment Section -->
+  <section id="appointment" class="section">
+    <div class="container">
+      <h2 class="section-title">Agendar Cita</h2>
+      <p class="section-subtitle">Programa tu consulta en pocos minutos</p>
+      
+      <div class="appointment-container">
+        <div class="appointment-info">
+          <h3>¿Por qué deberías agendar una cita con nosotros?</h3>
+          <p>En Vero's Oftalmología nos comprometemos a brindar la mejor atención posible. Nuestros especialistas cuentan con amplia experiencia y utilizan tecnología de vanguardia para garantizar diagnósticos precisos y tratamientos efectivos.</p>
+          <p>La salud visual es fundamental para tu calidad de vida. Un examen oftalmológico regular puede detectar problemas oculares en etapas tempranas, cuando son más fáciles de tratar.</p>
+          <h3>Prepárate para tu cita</h3>
+          <p>Para aprovechar al máximo tu consulta, te recomendamos:</p>
+          <ul style="padding-left: 20px;">
+            <li>Traer tus gafas o lentes de contacto actuales</li>
+            <li>Preparar una lista de medicamentos que estés tomando</li>
+            <li>Anotar cualquier síntoma o problema visual que hayas experimentado</li>
+            <li>Traer tu historial médico, especialmente de tratamientos oftalmológicos previos</li>
+          </ul>
+        </div>
+        
+        <div class="appointment-form">
+          <form id="citaForm">
+            <div class="form-group">
+              <label for="nombre">Nombre completo*</label>
+              <input type="text" id="nombre" name="nombre" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Correo electrónico*</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="telefono">Teléfono*</label>
+              <input type="tel" id="telefono" name="telefono" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="servicio">Servicio requerido*</label>
+              <select id="servicio" name="servicio" required>
+                <option value="">Selecciona un servicio</option>
+                <option value="examen">Examen completo de la vista</option>
+                <option value="lentes">Prescripción de lentes</option>
+                <option value="cirugia">Consulta para cirugía refractiva</option>
+                <option value="cataratas">Consulta para cataratas</option>
+                <option value="glaucoma">Consulta para glaucoma</option>
+                <option value="retina">Consulta para enfermedades de retina</option>
+                <option value="otro">Otro (especificar)</option>
+              </select>
+            </div>
+            
+            <div class="form-group" id="otroServicioGroup" style="display: none;">
+              <label for="otroServicio">Especificar otro servicio</label>
+              <input type="text" id="otroServicio" name="otroServicio">
+            </div>
+            
+            <div class="form-group">
+              <label for="fecha">Fecha preferida*</label>
+              <input type="date" id="fecha" name="fecha" required>
+            </div>
+            
+            <div class="form-group">
+              <label>Horario preferido*</label>
+              <div class="time-slots">
+                <div class="time-slot" data-time="09:00">9:00</div>
+                <div class="time-slot" data-time="10:00">10:00</div>
+                <div class="time-slot" data-time="11:00">11:00</div>
+                <div class="time-slot" data-time="12:00">12:00</div>
+                <div class="time-slot" data-time="16:00">16:00</div>
+                <div class="time-slot" data-time="17:00">17:00</div>
+                <div class="time-slot" data-time="18:00">18:00</div>
+              </div>
+              <input type="hidden" id="horario" name="horario" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="comentarios">Comentarios adicionales</label>
+              <textarea id="comentarios" name="comentarios" rows="3"></textarea>
+            </div>
+            
+            <button type="submit" class="form-submit">Agendar Cita</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="section testimonials-bg">
+    <div class="container">
+      <h2 class="section-title">Testimonios</h2>
+      <p class="section-subtitle
+```
